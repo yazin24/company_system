@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { employeeRouter } from './routes/employeeRoutes.js';
+import { productRouter } from './routes/productRoutes.js';
 
 dotenv.config()
 
@@ -23,4 +24,5 @@ mongoose.connect(process.env.DB_STRING)
 })
 
 app.use('/admin', employeeRouter)
+app.use('/product', productRouter)
 

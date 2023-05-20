@@ -1,4 +1,5 @@
 import React from 'react'
+import {FaPen, FaTrash} from 'react-icons/fa';
 
 const Home = () => {
   return (
@@ -17,13 +18,13 @@ const Home = () => {
             </thead>
             <tbody>
                 <tr>
-                    <td className='border border-gray-950'>sample item</td>
-                    <td className='border border-gray-950'>20 Bags</td>
-                    <td className='border border-gray-950'>2 Bags</td>
-                    <td className='border border-gray-950'>22 Bags</td>
-                    <td className='border border-gray-950'>3 Bags</td>
-                    <td className='border border-gray-950'>19 Bags</td>
-                    <td className='border border-gray-950'><button className='text-xs bg-blue-700 mr-2 rounded-md'>Update</button><button className='bg-red-700 rounded-md'>Delete</button></td>
+                    <td className='text-center border border-gray-950'>sample item</td>
+                    <td className='text-center border border-gray-950'>20 Bags</td>
+                    <td className='text-center border border-gray-950'>2 Bags</td>
+                    <td className='text-center border border-gray-950'>22 Bags</td>
+                    <td className='text-center border border-gray-950'>3 Bags</td>
+                    <td className='text-center border border-gray-950'>19 Bags</td>
+                    <td className='text-center border border-gray-950'><button className='text-xs text-white bg-blue-700 m-1 rounded-md p-1'><FaPen/></button><button className='text-xs text-white bg-red-700 m-1 rounded-md p-1'><FaTrash/></button></td>
                 </tr>
             </tbody>
         </table>
