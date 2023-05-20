@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { employeeRouter } from './routes/employeeRoutes.js';
 
 dotenv.config()
 
@@ -20,4 +21,6 @@ mongoose.connect(process.env.DB_STRING)
 }).catch((err) => {
     console.error(err);
 })
+
+app.use('/admin', employeeRouter)
 
