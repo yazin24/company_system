@@ -1,5 +1,6 @@
 import express from 'express';
 import { productModel } from '../models/productModel.js';
+import { employeeModel } from '../models/employeeModel.js';
 
 const router = express.Router();
 
@@ -29,6 +30,39 @@ router.get('/list-products', async (req, res) => {
     }
 
 });
+
+router.put ('/:id', async (req, res) => {
+    try {
+        const product = await productModel.findByIdAndDelete(req.params.id,{
+            itemName,
+            openingStock,
+            newPurchase,
+            output,
+        },
+        {new: true}
+        );
+        if(!product) {
+            return res.status(404).json({error:'Product not found'})
+        }
+        res.json(product);
+    }catch(err){
+        console.error(err);
+        res.status(500).json({error: 'Server error'})
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+
+    const {id} = req.params;
+
+    try {
+        await productModel.findByIdAndDelete(id);
+        res.json({message: 'Product deleted successfully!'});
+    }catch(err) {
+        console.error(err);
+        res.status(500).json({error: "An error occurred while deleting the product."});
+    }
+})
 
 
 

@@ -38,8 +38,20 @@
     background-size: 24px 24px;
   }
   .table {
-    width: 50rem;
+    width: 70rem;
   }
   tr:nth-child(even) {
     background-color:  rgb(190, 255, 186);
+  }
+  input {
+    width: 15rem;
+    height: 1.6rem;
+    margin-right: 1px;
+  }
+  form {
+    margin-left: 1.6rem;
+  }
+
+  .table-body {
+    margin-top: 5rem;
   }

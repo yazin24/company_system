@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {FaPen, FaTrash} from 'react-icons/fa';
 import axios from 'axios';
+import Update from './Update';
 
 const Home = () => {
 
@@ -18,9 +19,20 @@ const Home = () => {
         productData();
     },[])
 
+    const deleteProduct  = async (id) => {
+        try {
+            await axios.delete(`http://localhost:2400/product/${id}`);
+            alert('Product has been deleted!')
+            window.location.reload();
+        }catch(err) {
+            console.error(err)
+        }
+    }
+
   return (
-    <div>
-        <table className='table bg-white border border-gray-950 shadow-md ml-6 mt-24'>
+    <div className='table-body'>
+        <Update/>
+        <table className='table w-full bg-white border border-gray-950 shadow-md ml-6 mt-2'>
             <thead className='bg-green-600 text-white'>
                 <tr>
                     <th className='border border-gray-950'>Item</th>
@@ -41,7 +53,7 @@ const Home = () => {
                      <td className='text-center border border-gray-950'>{item.totalStock}</td>
                      <td className='text-center border border-gray-950'>{item.output}</td>
                      <td className='text-center border border-gray-950'>{item.endingStock}</td>
-                     <td className='text-center border border-gray-950'><button className='text-xs text-white bg-blue-700 m-1 rounded-md p-1'><FaPen/></button><button className='text-xs text-white bg-red-700 m-1 rounded-md p-1'><FaTrash/></button></td>
+                     <td className='text-center border border-gray-950'><button className='text-xs text-white bg-blue-700 m-1 rounded-md p-1'><FaPen/></button><button className='text-xs text-white bg-red-700 m-1 rounded-md p-1' onClick={() => deleteProduct(item._id)}><FaTrash/></button></td>
                  </tr>
                 ))}
                
