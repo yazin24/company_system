@@ -33,11 +33,11 @@ router.get('/list-products', async (req, res) => {
 
 router.put ('/:id', async (req, res) => {
     try {
-        const product = await productModel.findByIdAndDelete(req.params.id,{
-            itemName,
-            openingStock,
-            newPurchase,
-            output,
+        const product = await productModel.findByIdAndUpdate(req.params.id,{
+            itemName: req.body.firstName,
+            openingStock: req.body.openingStock,
+            newPurchase: req.body.newPurchase,
+            output: req.body.output,
         },
         {new: true}
         );
