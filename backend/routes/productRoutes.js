@@ -4,66 +4,64 @@ import { employeeModel } from '../models/employeeModel.js';
 
 const router = express.Router();
 
+export const productRoutes = (db) => {
+
 router.post('/add-product', async (req, res) => {
-    const {itemName, openingStock, newPurchase, totalStock, output, endingStock} = req.body
 
-    const product = await productModel.findOne({itemName});
+    const {product_name, opening_stock, new_purchase, total_stock, output, ending_stock} = req.body
 
-    if(product){
-        console.log('Product already in the database')
-    }
+    db.query('INSERT INTO inventory_products (product_name, opening_stock, new_purchase, total_stock, output, ending_stock) VALUES (?, ?, ?, ?, ?,?)', [product_name, opening_stock, new_purchase, total_stock, output, ending_stock], (err, result) => {
+        if(err) {
+            console.log(err)
+        }else {
+            res.send('Values Inserted!')
+        }
+    });
 
-    const newProduct = new productModel({itemName, openingStock, newPurchase, totalStock,output, endingStock})
-
-    await newProduct.save();
-
-    res.json({message: 'Items has been added successfully!'})
 });
 
 router.get('/list-products', async (req, res) => {
 
-    try {
-        const response = await productModel.find({})
-        res.json(response);
-    }catch(err) {
+   db.query('SELECT * FROM inventory_products', (err, result) => {
+    if(err) {
         console.error(err);
+    }else {
+        res.json(result)
     }
+   })
 
 });
 
-router.put ('/:id', async (req, res) => {
-    try {
-        const product = await productModel.findByIdAndUpdate(req.params.id,{
-            itemName: req.body.firstName,
-            openingStock: req.body.openingStock,
-            newPurchase: req.body.newPurchase,
-            output: req.body.output,
-        },
-        {new: true}
-        );
-        if(!product) {
-            return res.status(404).json({error:'Product not found'})
+router.put ('/update/:id', async (req, res) => {
+   
+    const id = req.params.id
+    const {product_name ,opening_stock, new_purchase, total_stock,output, ending_stock} = req.body
+
+    db.query('UPDATE inventory_products SET product_name = ?, opening_stock = ?, new_purchase = ?, total_stock = ?, output = ?, ending_stock = ?, where id = ?', [product_name, opening_stock, new_purchase, total_stock, output, ending_stock, id], (err, result) => {
+        if(err) {
+            console.error(err);
+            res.status(500).sjon({error:'Failed to update product!'});
+        }else {
+            re.json({message: 'Product has been updated successfully!'})
         }
-        res.json(product);
-    }catch(err){
-        console.error(err);
-        res.status(500).json({error: 'Server error'})
-    }
+    });
+
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
 
     const {id} = req.params;
 
-    try {
-        await productModel.findByIdAndDelete(id);
-        res.json({message: 'Product deleted successfully!'});
-    }catch(err) {
-        console.error(err);
-        res.status(500).json({error: "An error occurred while deleting the product."});
-    }
+    db.query('DELETE FROM inventory_products where id = ?', id, (err,result) => {
+        if(err) {
+            console.error(err);
+            res.status(500).json({error: 'Failed to delete product!'})
+        }else {
+            res.json({message: 'Product has been deleted successfully!'})
+        }
+    })
 })
 
+return router;
 
-
-export {router as productRouter}
+}

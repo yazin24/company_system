@@ -52,12 +52,12 @@ const Home = () => {
             <tbody>
                 {data.map((item) => (
                      <tr key = {item.id}>
-                     <td className='text-center border border-gray-950'>{item.itemName}</td>
-                     <td className='text-center border border-gray-950'>{item.openingStock}</td>
-                     <td className='text-center border border-gray-950'>{item.newPurchase}</td>
-                     <td className='text-center border border-gray-950'>{item.totalStock}</td>
+                     <td className='text-center border border-gray-950'>{item.product_name}</td>
+                     <td className='text-center border border-gray-950'>{item.opening_stock}</td>
+                     <td className='text-center border border-gray-950'>{item.new_purchase}</td>
+                     <td className='text-center border border-gray-950'>{item.total_stock}</td>
                      <td className='text-center border border-gray-950'>{item.output}</td>
-                     <td className='text-center border border-gray-950'>{item.endingStock}</td>
+                     <td className='text-center border border-gray-950'>{item.ending_stock}</td>
                      <td className='text-center border border-gray-950'><button className='text-xs text-white bg-blue-700 m-1 rounded-md p-1' onClick={()=> selectProduct(item)}><FaPen/></button><button className='text-xs text-white bg-red-700 m-1 rounded-md p-1' onClick={() => deleteProduct(item._id)}><FaTrash/></button></td>
                  </tr>
                 ))}
