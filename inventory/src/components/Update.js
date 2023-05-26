@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Update = ({ product }) => {
-  const [itemName, setItemName] = useState(product.itemName);
-  const [openingStock, setOpeningStock] = useState(product.openingStock);
-  const [newPurchase, setNewPurchase] = useState(product.newPurchase);
+  const [product_name, setProduct_name] = useState(product.product_name);
+  const [opening_stock, setOpening_stock] = useState(product.opening_stock);
+  const [new_purchase, setNew_purchase] = useState(product.new_purchase);
   const [output, setOutput] = useState(product.output);
 
-  const handleItemNameChange = (event) => {
-    setItemName(event.target.value);
+  const handleProductNameChange = (event) => {
+    setProduct_name(event.target.value);
   };
 
   const handleOpeningStockChange = (event) => {
-    setOpeningStock(event.target.value);
+    setOpening_stock(event.target.value);
   };
 
   const handleNewPurchaseChange = (event) => {
-    setNewPurchase(event.target.value);
+    setNew_purchase(event.target.value);
   };
 
   const handleOutputChange = (event) => {
@@ -27,14 +27,14 @@ const Update = ({ product }) => {
     event.preventDefault();
 
     const updatedProduct = {
-      itemName,
-      openingStock,
-      newPurchase,
+      product_name,
+      opening_stock,
+      new_purchase,
       output,
     };
 
     try {
-      await axios.put(`http://localhost:2400/product/${product._id}`, updatedProduct);
+      await axios.put(`http://localhost:2400/product/update/${product.id}`, updatedProduct);
       alert('Product has been updated successfully!');
       window.location.reload();
     } catch (err) {
@@ -52,15 +52,15 @@ const Update = ({ product }) => {
             placeholder='Item Name'
             required
             className='border border-2 border-blue-900 rounded shadow-md'
-            value={itemName}
-            onChange={handleItemNameChange}
+            value={product_name}
+            onChange={handleProductNameChange}
           />
           <input
             type='number'
             placeholder='Opening Stock'
             required
             className='border border-2 border-blue-900 rounded shadow-md'
-            value={openingStock}
+            value={opening_stock}
             onChange={handleOpeningStockChange}
           />
           <input
@@ -68,7 +68,7 @@ const Update = ({ product }) => {
             placeholder='New Purchase'
             required
             className='border border-2 border-blue-900 rounded shadow-md'
-            value={newPurchase}
+            value={new_purchase}
             onChange={handleNewPurchaseChange}
           />
           <input

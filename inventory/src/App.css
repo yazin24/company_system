@@ -1,45 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.bg-pattern-stripes {
-    background-image: repeating-linear-gradient(
-      20deg,
-      transparent,
-      transparent 10px,
-      #f9f9f9 10px,
-      #f7fafc 20px
-    );
-  }
-
-  .bg-pattern-circles {
-    background-image: radial-gradient(
-      #f7fafc 15%,
-      transparent 16%
-    );
-    background-size: 24px 24px;
-  }
-
-  .bg-pattern-diagonal-lines {
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      #f7fafc 10px,
-      #f7fafc 20px
-    );
-  }
-
-  .bg-pattern-polka-dots {
-    background-image: radial-gradient(
-      #f7fafc 15%,
-      transparent 16%
-    );
-    background-size: 24px 24px;
-  }
-  .table {
-    width: 70rem;
-  }
   tr:nth-child(even) {
     background-color:  rgb(190, 255, 186);
   }
@@ -54,4 +18,8 @@
 
   .table-body {
     margin-top: 5rem;
+  }
+  .components {
+    display: flex;
+    gap: 2rem;
   }

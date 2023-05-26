@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {FaPen, FaTrash} from 'react-icons/fa';
 import axios from 'axios';
 import Update from './Update';
+import {useNavigate, Link} from 'react-router-dom';
 
 const Home = () => {
 
@@ -22,7 +23,7 @@ const Home = () => {
 
     const deleteProduct  = async (id) => {
         try {
-            await axios.delete(`http://localhost:2400/product/${id}`);
+            await axios.delete(`http://localhost:2400/product/delete/${id}`);
             alert('Product has been deleted!')
             window.location.reload();
         }catch(err) {
@@ -35,30 +36,30 @@ const Home = () => {
     };
 
   return (
-    <div className='table-body'>
+    <div className='whole-table'>
        {selectedProduct && <Update product={selectedProduct}/>}
-        <table className='table w-full bg-white border border-gray-950 shadow-md ml-6 mt-2'>
-            <thead className='bg-green-600 text-white'>
+        <table className=''>
+            <thead className=''>
                 <tr>
-                    <th className='border border-gray-950'>Item</th>
-                    <th className='border border-gray-950'>Opening Stock</th>
-                    <th className='border border-gray-950'>New Purchase</th>
-                    <th className='border border-gray-950'>Total Stock</th>
-                    <th className='border border-gray-950'>Output</th>
-                    <th className='border border-gray-950'>Ending Stock</th>
-                    <th className='border border-gray-950'>Actions</th>
+                    <th className=''>Item</th>
+                    <th className=''>Opening Stock</th>
+                    <th className=''>New Purchase</th>
+                    <th className=''>Total Stock</th>
+                    <th className=''>Output</th>
+                    <th className=''>Ending Stock</th>
+                    <th className=''>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((item) => (
                      <tr key = {item.id}>
-                     <td className='text-center border border-gray-950'>{item.product_name}</td>
-                     <td className='text-center border border-gray-950'>{item.opening_stock}</td>
-                     <td className='text-center border border-gray-950'>{item.new_purchase}</td>
-                     <td className='text-center border border-gray-950'>{item.total_stock}</td>
-                     <td className='text-center border border-gray-950'>{item.output}</td>
-                     <td className='text-center border border-gray-950'>{item.ending_stock}</td>
-                     <td className='text-center border border-gray-950'><button className='text-xs text-white bg-blue-700 m-1 rounded-md p-1' onClick={()=> selectProduct(item)}><FaPen/></button><button className='text-xs text-white bg-red-700 m-1 rounded-md p-1' onClick={() => deleteProduct(item._id)}><FaTrash/></button></td>
+                     <td className=''>{item.product_name}</td>
+                     <td className=''>{item.opening_stock}</td>
+                     <td className=''>{item.new_purchase}</td>
+                     <td className=''>{item.total_stock}</td>
+                     <td className=''>{item.output}</td>
+                     <td className=''>{item.ending_stock}</td>
+                     <td className=''><button className='' onClick={()=> selectProduct(item)}><FaPen/></button><button className='' onClick={() => deleteProduct(item.id)}><FaTrash/></button></td>
                  </tr>
                 ))}
                

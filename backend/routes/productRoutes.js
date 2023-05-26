@@ -35,14 +35,14 @@ router.get('/list-products', async (req, res) => {
 router.put ('/update/:id', async (req, res) => {
    
     const id = req.params.id
-    const {product_name ,opening_stock, new_purchase, total_stock,output, ending_stock} = req.body
+    const {product_name ,opening_stock, new_purchase, total_stock, output, ending_stock} = req.body
 
-    db.query('UPDATE inventory_products SET product_name = ?, opening_stock = ?, new_purchase = ?, total_stock = ?, output = ?, ending_stock = ?, where id = ?', [product_name, opening_stock, new_purchase, total_stock, output, ending_stock, id], (err, result) => {
+    db.query('UPDATE inventory_products SET product_name = ?, opening_stock = ?, new_purchase = ?,  output = ? where id = ?', [product_name, opening_stock, new_purchase, output, id], (err, result) => {
         if(err) {
             console.error(err);
-            res.status(500).sjon({error:'Failed to update product!'});
+            res.status(500).json({error:'Failed to update product!'});
         }else {
-            re.json({message: 'Product has been updated successfully!'})
+            res.json({message: 'Product has been updated successfully!'})
         }
     });
 
@@ -60,7 +60,7 @@ router.delete('/delete/:id', async (req, res) => {
             res.json({message: 'Product has been deleted successfully!'})
         }
     })
-})
+});
 
 return router;
 
