@@ -9,36 +9,36 @@ import { FaPenSquare } from 'react-icons/fa';
 const Sidebar = () => {
   return (
     <div>
-      <div className="whole-sidebar">
+      <div className="flex bg-gray-900 h-screen w-52 text-white shadow-lg">
         <nav className=''>
           <ul>
-            <li className=''><Link to='/'>
-              <div className=''>
-                <div><FaHome className='' /></div>
+            <li className='h-8 w-52 hover:bg-blue-500 p-8'><Link to='/'>
+              <div className='flex items-center'>
+                <div><FaHome className='text-xl mr-1' /></div>
                 <div>Home</div>
               </div>
             </Link></li>
-            <li className=''><Link to='/add'>
-              <div className=''>
-                <div><FaPlusCircle className='' /></div>
+            <li className='h-8 w-52 hover:bg-blue-500 p-8'><Link to='/add'>
+              <div className='flex items-center '>
+                <div><FaPlusCircle className='text-xl mr-1' /></div>
                 <div>Add Items</div>
               </div>
             </Link></li>
-            <li className=''><Link to='/'>
-              <div className=''>
-                <div><FaBox className='' /></div>
+            <li className='h-8 w-52 hover:bg-blue-500 p-8'><Link to='/'>
+              <div className='flex items-center '>
+                <div><FaBox className='text-xl mr-1' /></div>
                 <div>Purchase Order</div>
               </div>
             </Link></li>
-            <li className=''><Link to='/'>
-              <div className=''>
-                <div><FaTools className='' /></div>
+            <li className='h-8 w-52 hover:bg-blue-500 p-8'><Link to='/'>
+              <div className='flex items-center '>
+                <div><FaTools className='text-xl mr-1' /></div>
                 <div>Settings</div>
               </div>
             </Link></li>
-            <li className=''><Link to='/'>
-              <div className=''>
-                <div><FaPenSquare className='' /></div>
+            <li className='h-8 w-52 hover:bg-blue-500 p-8'><Link to='/'>
+              <div className='flex items-center'>
+                <div><FaPenSquare className='text-xl mr-1' /></div>
                 <div>Update</div>
               </div>
             </Link></li>

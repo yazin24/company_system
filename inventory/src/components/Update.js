@@ -47,9 +47,10 @@ const Update = ({ product }) => {
     <div>
       <div>
         <form onSubmit={updateProduct}>
+          
           <input
             type='text'
-            placeholder='Item Name'
+            placeholder='Product Name'
             required
             className='border border-2 border-blue-900 rounded shadow-md'
             value={product_name}

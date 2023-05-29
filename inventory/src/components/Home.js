@@ -36,30 +36,30 @@ const Home = () => {
     };
 
   return (
-    <div className='whole-table'>
+    <div className='whole-table mt-24'>
        {selectedProduct && <Update product={selectedProduct}/>}
-        <table className=''>
-            <thead className=''>
+        <table className='table-body shadow-lg ml-6'>
+            <thead className='bg-green-500'>
                 <tr>
-                    <th className=''>Item</th>
-                    <th className=''>Opening Stock</th>
-                    <th className=''>New Purchase</th>
-                    <th className=''>Total Stock</th>
-                    <th className=''>Output</th>
-                    <th className=''>Ending Stock</th>
-                    <th className=''>Actions</th>
+                    <th className='border border-gray-900'>Product</th>
+                    <th className='border border-gray-900'>Opening Stock</th>
+                    <th className='border border-gray-900'>New Purchase</th>
+                    <th className='border border-gray-900'>Total Stock</th>
+                    <th className='border border-gray-900'>Output</th>
+                    <th className='border border-gray-900'>Ending Stock</th>
+                    <th className='border border-gray-900'>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((item) => (
                      <tr key = {item.id}>
-                     <td className=''>{item.product_name}</td>
-                     <td className=''>{item.opening_stock}</td>
-                     <td className=''>{item.new_purchase}</td>
-                     <td className=''>{item.total_stock}</td>
-                     <td className=''>{item.output}</td>
-                     <td className=''>{item.ending_stock}</td>
-                     <td className=''><button className='' onClick={()=> selectProduct(item)}><FaPen/></button><button className='' onClick={() => deleteProduct(item.id)}><FaTrash/></button></td>
+                     <td className='border border-gray-900 text-center'>{item.product_name}</td>
+                     <td className='border border-gray-900 text-center'>{item.opening_stock}</td>
+                     <td className='border border-gray-900 text-center'>{item.new_purchase}</td>
+                     <td className='border border-gray-900 text-center'>{item.total_stock}</td>
+                     <td className='border border-gray-900 text-center'>{item.output}</td>
+                     <td className='border border-gray-900 text-center'>{item.ending_stock}</td>
+                     <td className='border border-gray-900 text-center'><button className='bg-blue-700 p-1 rounded-sm -4 my-1 text-white' onClick={()=> selectProduct(item)}><FaPen/></button><button className='bg-red-700 p-1 rounded-sm ml-2 my-1 text-white' onClick={() => deleteProduct(item.id)}><FaTrash/></button></td>
                  </tr>
                 ))}
                

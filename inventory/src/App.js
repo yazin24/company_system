@@ -6,7 +6,7 @@ import Add from './components/Add';
 
 function App() {
   return (
-    <div className='b'>
+    <div className='bg-gray-300'>
       <Router>
         <div className='components'>
           <div>

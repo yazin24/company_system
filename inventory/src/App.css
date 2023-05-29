@@ -1,14 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
   tr:nth-child(even) {
     background-color:  rgb(190, 255, 186);
   }
   input {
-    width: 15rem;
+    width: 12rem;
     height: 1.6rem;
     margin-right: 1px;
   }
@@ -17,9 +22,16 @@
   }
 
   .table-body {
-    margin-top: 5rem;
+    margin-top: 5px;
+    width: 60rem;
+    background-color: aliceblue;
   }
   .components {
     display: flex;
     gap: 2rem;
+  }
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
   }
